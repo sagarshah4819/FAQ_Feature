@@ -22,13 +22,14 @@
                                             </div>
                                             <div class="card-body">
                                                 <p class="card-text">{{$question->body}}</p>
-                                                <p class="card-text">{{$question->user_id}}
+
                                             </div>
                                             <div class="card-footer">
                                                 <p class="card-text">
                                                     <a class="btn btn-primary float-right" href="{{ route('question.show', ['id' => $question->id]) }}">
                                                         View
                                                     </a>
+                                                    <p class="card-text float-left">{{$question->user_id}}
                                                 </p>
                                             </div>
                                         </div>
