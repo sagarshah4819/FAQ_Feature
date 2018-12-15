@@ -9,14 +9,17 @@
                         {{$answer->body}}
                     </div>
                     <div class="card-footer">
+                        @if(Auth::user()->id == $answer->user_id)
                         {{ Form::open(['method'  => 'DELETE', 'route' => ['answer.destroy', $question, $answer->id]])}}
                         <button class="btn btn-danger float-right mr-2" value="submit" type="submit" id="submit">Delete
                         </button>
                         {!! Form::close() !!}
+                        @endif
                         <a class="btn btn-primary float-right" href="{{ route('answer.edit',['question_id'=> $question, 'answer_id'=> $answer->id, ])}}">
 
                         Edit Answer
                         </a>
+
                     </div>
                 </div>
             </div>
