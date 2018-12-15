@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Notifications\DeletedAnswerToQuestion;
 use Illuminate\Http\Request;
 use App\Answer;
 use App\Question;
@@ -117,6 +118,7 @@ class AnswerController extends Controller
 
         $answer = Answer::find($answer);
         $answer->delete();
+        Auth::user()->notify(new DeletedAnswerToQuestion());
         return redirect()->route('question.show',['question_id' => $question])->with('message', 'Delete');
     }
 }

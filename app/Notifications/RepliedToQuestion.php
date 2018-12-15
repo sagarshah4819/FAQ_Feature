@@ -46,7 +46,7 @@ class RepliedToQuestion extends Notification
         $question_url = explode("/", $question_path);
 
         return (new MailMessage)
-                    ->line('You have a new answer to your question.')
+                    ->line("You have a new answer to your question, ".$question_url[1].".")
                     ->action('View answer', \route('question.show', $question_url[1]))
                     ->line('Thank you for using our application!');
     }
