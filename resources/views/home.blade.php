@@ -29,7 +29,7 @@
                                                     <a class="btn btn-primary float-right" href="{{ route('question.show', ['id' => $question->id]) }}">
                                                         View
                                                     </a>
-                                                    <p class="card-text float-left">{{$question->user_id}}
+                                                    <p class="card-text float-left"> Posted by user id {{$question->user_id}}
                                                 </p>
                                             </div>
                                         </div>
