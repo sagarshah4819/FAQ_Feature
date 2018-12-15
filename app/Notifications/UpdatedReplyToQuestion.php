@@ -50,7 +50,6 @@ class UpdatedReplyToQuestion extends Notification
         //dd($request);
         $question_path = $request->path();
         $question_url = explode("/", $question_path);
-        dd($question_url);
 
         return (new MailMessage)
                     ->line("You have an updated answer for question, ".$question_url[1].".")
