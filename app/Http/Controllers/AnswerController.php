@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use App\Answer;
 use App\Question;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\RepliedToQuestion;
+use App\Notifications\UpdatedReplyToQuestion;
 class AnswerController extends Controller
 {
     /**
@@ -52,6 +54,7 @@ class AnswerController extends Controller
         $Answer->user()->associate(Auth::user());
         $Answer->question()->associate($question);
         $Answer->save();
+        Auth::user()->notify(new RepliedToQuestion());
         return redirect()->route('question.show',['question_id' => $question->id])->with('message', 'Saved');
     }
     /**
@@ -98,6 +101,7 @@ class AnswerController extends Controller
         $answer = Answer::find($answer);
         $answer->body = $request->body;
         $answer->save();
+        Auth::user()->notify(new UpdatedReplyToQuestion());
         return redirect()->route('answer.show',['question_id' => $question, 'answer_id' => $answer])->with('message', 'Updated');
 
     }
