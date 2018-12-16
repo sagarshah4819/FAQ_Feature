@@ -50,7 +50,7 @@ class DeletedAnswerToQuestion extends Notification
         $question_path = $request->path();
         $question_url = explode("/", $question_path);
         return (new MailMessage)
-                    ->line("You have deleted answer to question, ".$question_url[1].".")
+                    ->line("Answer to question ".$question_url[1]. "has been deleted.")
 
                     ->line('Thank you for using our application!');
     }
